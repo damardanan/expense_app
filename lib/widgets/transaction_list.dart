@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
@@ -10,7 +11,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: 300,
       child: ListView.builder(
         itemBuilder: (ctx, index) {
           return Card(
@@ -23,17 +24,17 @@ class TransactionList extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.black,
-                      width: 1,
+                      color: Colors.purple,
+                      width: 2,
                     ),
                   ),
-                  padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(10),
                   child: Text(
-                    transactions[index].amount.toStringAsFixed(2),
+                    '\$${transactions[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      color: Colors.indigo,
+                      color: Colors.purple,
                     ),
                   ),
                 ),
@@ -42,13 +43,19 @@ class TransactionList extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       transactions[index].title,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Text(
-                      DateFormat("dd-MM-yyyy").format(transactions[index].date),
-                      style: TextStyle(color: Colors.grey),
+                      DateFormat.yMMMd().format(transactions[index].date),
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           );
